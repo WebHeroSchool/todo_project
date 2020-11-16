@@ -38,6 +38,9 @@ class App extends Component {
         { 20 + 30 }
         </p>
         <p>
+        { 20 + 30 }
+        </p>
+        <p>
         {flag && 'Flag is true'}
         </p>
         <p>
