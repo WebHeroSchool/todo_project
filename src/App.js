@@ -1,34 +1,15 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { count, length } from './number';
-
-class App extends Component {
-  render() {
-    return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p style = {{
-        	color: 'red',
-        	fontSize: 20
-        }}> 
-        count * length = { count*length }</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-    );
-  }
-}
+import React from 'react';
+const ItemList = () => (<ul>
+	<li> React-компонент </li>
+	<li> Структура проекта </li>
+	<li> Props </li>
+	<li> React Developer Tools </li>
+	<li> Вывод списка элементов и ключи </li>
+	</ul>);
+const App = () => (<div>
+<h1> Изучаем React </h1>
+<p> План работы на неделю </p>
+<ItemList />
+</div>);
 
 export default App;
