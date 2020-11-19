@@ -1,4 +1,4 @@
 import React from 'react';
-const Item = () => (<span> Изучение урока по React </span>);
+const Item = ({ todoItem }) => (<span> {todoItem} </span>);
 
 	export default Item;
