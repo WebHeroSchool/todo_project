@@ -4,12 +4,25 @@ import Footer from '../Footer/Footer';
 import InputItem from '../InputItem/InputItem';
 
 const todoItem = 'Изучить props-ы';
-const App = () => (
+const App = () => {
+	const items = [
+	{
+		value: 'Изучить props-ы'
+	},
+	{
+		value: 'Изучить React Developer Tools'
+	},
+	{
+		value: 'Изучить вывод элементов списка и ключи'
+	},
+		];
+		return ( 
 	<div>
 	<h1> План обучения на неделю </h1>
 	<InputItem />
-	<ItemList todoItem={todoItem} />
+	<ItemList items={items} />
 	<Footer count={3} />
 	</div>);
+}
 
 	export default App;
