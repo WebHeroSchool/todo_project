@@ -2,6 +2,7 @@ import React from 'react';
 import ItemList from '../ItemList/ItemList';
 import Footer from '../Footer/Footer';
 import InputItem from '../InputItem/InputItem';
+import './App.css';
 
 const todoItem = 'Изучить props-ы';
 const App = () => {
@@ -17,8 +18,8 @@ const App = () => {
 	},
 		];
 		return ( 
-	<div>
-	<h1> План обучения на неделю </h1>
+	<div className="wrap">
+	<h1 class="wrap__title"> План обучения на неделю </h1>
 	<InputItem />
 	<ItemList items={items} />
 	<Footer count={3} />
