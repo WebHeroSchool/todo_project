@@ -8,13 +8,16 @@ const todoItem = 'Изучить props-ы';
 const App = () => {
 	const items = [
 	{
-		value: 'Изучить props-ы'
+		value: 'Изучить props-ы',
+		isDone: true
 	},
 	{
-		value: 'Изучить React Developer Tools'
+		value: 'Изучить React Developer Tools',
+		isDone: true
 	},
 	{
-		value: 'Изучить вывод элементов списка и ключи'
+		value: 'Изучить вывод элементов списка и ключи',
+		isDone: false
 	},
 		];
 		return ( 
