@@ -3,26 +3,28 @@ import ItemList from '../ItemList/ItemList';
 import Footer from '../Footer/Footer';
 import InputItem from '../InputItem/InputItem';
 import style from './App.module.css';
+import 'fontsource-roboto';
 
-const todoItem = 'Изучить props-ы';
+
+const todoItem = 'Компоненты-классы';
 const App = () => {
 	const items = [
 	{
-		value: 'Изучить props-ы',
+		value: 'Компоненты-классы',
 		isDone: true
 	},
 	{
-		value: 'Изучить React Developer Tools',
-		isDone: true
+		value: 'State',
+		isDone: false
 	},
 	{
-		value: 'Изучить вывод элементов списка и ключи',
+		value: 'Обработка событий',
 		isDone: false
 	},
 		];
 		return ( 
 	<div className={style.wrap}>
-	<h1 class={style.title}> План обучения на неделю </h1>
+	<h1 className={style.title}> План обучения на неделю </h1>
 	<InputItem />
 	<ItemList items={items} />
 	<Footer count={3} />
