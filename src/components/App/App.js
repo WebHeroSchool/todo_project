@@ -5,10 +5,9 @@ import InputItem from '../InputItem/InputItem';
 import style from './App.module.css';
 import 'fontsource-roboto';
 
-
-const todoItem = 'Компоненты-классы';
-const App = () => {
-	const items = [
+class App extends React.Component {
+	render () {
+			const items = [
 	{
 		value: 'Компоненты-классы',
 		isDone: true
@@ -29,6 +28,7 @@ const App = () => {
 	<ItemList items={items} />
 	<Footer count={3} />
 	</div>);
-}
+	}
+};
 
 	export default App;
