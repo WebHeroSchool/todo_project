@@ -6,8 +6,8 @@ import style from './App.module.css';
 import 'fontsource-roboto';
 
 class App extends React.Component {
-	render () {
-			const items = [
+	state = {
+		items: [
 	{
 		value: 'Компоненты-классы',
 		isDone: true
@@ -19,13 +19,15 @@ class App extends React.Component {
 	{
 		value: 'Обработка событий',
 		isDone: false
-	},
-		];
+	}
+		]
+	};
+render () {
 		return ( 
 	<div className={style.wrap}>
 	<h1 className={style.title}> План обучения на неделю </h1>
 	<InputItem />
-	<ItemList items={items} />
+	<ItemList items={this.state.items} />
 	<Footer count={3} />
 	</div>);
 	}
