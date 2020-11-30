@@ -6,7 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 
-const Item = ({ value, isDone }) => (<span className={
+const Item = ({ value, isDone, onClickDone }) => (<span className={
 	classnames({
 		[styles.item]: true,
 		[styles.done]: isDone
@@ -16,6 +16,8 @@ const Item = ({ value, isDone }) => (<span className={
         defaultChecked
         color="primary"
         inputProps={{ 'aria-label': 'secondary checkbox' }}
+        checked={isDone}
+        onClick={() => onClickDone(isDone)}
       />
 <IconButton className={styles.icon} aria-label="delete" disabled color="primary">
         <DeleteIcon />
