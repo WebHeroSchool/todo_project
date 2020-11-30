@@ -16,7 +16,6 @@ const Item = ({ value, isDone, onClickDone }) => (<span className={
         defaultChecked
         color="primary"
         inputProps={{ 'aria-label': 'secondary checkbox' }}
-        checked={isDone}
         onClick={() => onClickDone(isDone)}
       />
 <IconButton className={styles.icon} aria-label="delete" disabled color="primary">
