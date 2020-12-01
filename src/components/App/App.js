@@ -10,27 +10,39 @@ class App extends React.Component {
 		items: [
 	{
 		value: 'Компоненты-классы',
-		isDone: true
+		isDone: true,
+		id: 1
 	},
 	{
 		value: 'State',
-		isDone: false
+		isDone: false,
+		id: 2
 	},
 	{
 		value: 'Обработка событий',
-		isDone: false
+		isDone: false,
+		id: 3
 	}
-		]
+		],
+		count: 6
 	};
-	onClickDone = isDone => console.log(isDone);
-
+	onClickDone = id => {
+		const newItemList = this.state.items.map(item => {
+			const newItem = {...item};
+			if (item.id === id) {
+				newItem.isDone = !item.isDone;
+			}
+			return newItem;
+		});
+		this.setState({ items: newItemList});
+	};
 render () {
 		return ( 
 	<div className={style.wrap}>
 	<h1 className={style.title}> План обучения на неделю </h1>
 	<InputItem />
 	<ItemList items={this.state.items} onClickDone={this.onClickDone} />
-	<Footer count={3} />
+	<Footer count={this.state.count} />
 	</div>);
 	}
 };
