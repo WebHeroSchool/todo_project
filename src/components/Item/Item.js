@@ -18,11 +18,12 @@ const Item = ({ value, isDone, onClickDone, id, onClickDelete }) => (<span class
         inputProps={{ 'aria-label': 'secondary checkbox' }}
         onClick={() => onClickDone(id)}
       />
-<IconButton className={styles.icon} aria-label="delete" 
-        disabled color="primary">
+<IconButton className={styles.icon} 
+        aria-label="delete" 
+        color="primary">
         <DeleteIcon        
         onClick={() => onClickDelete(id)}
-/>
+      />
       </IconButton>
 {value}
 </span>);

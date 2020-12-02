@@ -8,7 +8,7 @@ const ItemList = ({ items, onClickDone, onClickDelete }) => (<ul className={styl
 	 isDone={item.isDone}
 	 id={item.id}
 	 onClickDone={onClickDone}
- 	 onClickDelete={onClickDelete}
+	 onClickDelete={onClickDelete}
 	 />
 	 </li>))}
 	</ul>);
