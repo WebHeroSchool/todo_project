@@ -24,7 +24,8 @@ class App extends React.Component {
 		id: 3
 	}
 		],
-		count: 6
+		count: 3,
+		hasError: false
 	};
 	onClickDone = id => {
 		const newItemList = this.state.items.map(item => {
@@ -40,11 +41,33 @@ class App extends React.Component {
 		const newDelItemList = this.state.items.filter(item => item.id !== id);
 		this.setState({ items: newDelItemList});
 	};
+onClickAdd = value => {
+	if (value !== '')
+		{this.setState(state => ({
+			items: [
+			...state.items,
+			{
+				value,
+				isDone: false,
+				id: state.count + 1
+			}
+			],
+			count: state.count + 1,
+			hasError: false
+		}));
+ }
+ else {
+ 	this.setState(state => 
+        ({
+          hasError: true
+        }));
+ }
+};
 render () {
 		return ( 
 	<div className={style.wrap}>
 	<h1 className={style.title}> План обучения на неделю </h1>
-	<InputItem />
+	<InputItem onClickAdd={this.onClickAdd} hasError={this.state.hasError} />
 	<ItemList items={this.state.items} onClickDone={this.onClickDone} onClickDelete={this.onClickDelete} />
 	<Footer count={this.state.count} />
 	</div>);

@@ -1,9 +1,29 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import styles from './InputItem.module.css';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
-
-const InputItem = () => (<div className={styles.inputWrap}>
+class InputItem extends React.Component {
+  state = {
+    inputValue: ''
+  };
+  onButtonClick = () => {
+    this.setState({
+      inputValue: ''
+    });
+    this.props.onClickAdd(this.state.inputValue.toUpperCase());
+  }
+  render() {
+    const { onClickAdd } = this.props;
+    const condition = this.props.hasError;
+    let formHelperText;
+    if (condition) {
+      formHelperText = 'Поле ввода не может быть пустым'
+    } else {
+      formHelperText = ''
+    } 
+    return (<div className={styles.inputWrap}>
    <TextField
    className={styles.inputField}
           id="outlined-full-width"
@@ -11,11 +31,27 @@ const InputItem = () => (<div className={styles.inputWrap}>
           style={{ margin: 0 }}
           placeholder="Введите тему для изучения"
           fullWidth
+          value={this.state.inputValue.toUpperCase()}
+          onChange={event => this.setState({inputValue:event.target.value})}
           margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
           variant="outlined"
         />
-        </div>);
+         <div className={styles.warning}>
+         {formHelperText}
+        </div>
+        <Button 
+        variant="contained" 
+        color="primary"
+        fullWidth
+        onClick={this.onButtonClick}>
+        Добавить Задание
+      </Button>
+        </div>
+        );
+  }
+}
+
 export default InputItem;
