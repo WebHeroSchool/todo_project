@@ -1,7 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import styles from './InputItem.module.css';
-import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
 class InputItem extends React.Component {
@@ -15,7 +14,6 @@ class InputItem extends React.Component {
     this.props.onClickAdd(this.state.inputValue.toUpperCase());
   }
   render() {
-    const { onClickAdd } = this.props;
     const condition = this.props.hasError;
     let formHelperText;
     if (condition) {
