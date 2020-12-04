@@ -28,4 +28,5 @@ const Item = ({ value, isDone, onClickDone, id, onClickDelete }) => (<span class
 {value}
 </span>);
 
+
 	export default Item;
