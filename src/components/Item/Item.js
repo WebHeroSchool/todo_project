@@ -4,6 +4,7 @@ import styles from './Item.module.css';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import PropTypes from 'prop-types';
 
 
 const Item = ({ value, isDone, onClickDone, id, onClickDelete }) => (<span className={
@@ -31,6 +32,14 @@ const Item = ({ value, isDone, onClickDone, id, onClickDelete }) => (<span class
 Item.defaultProps = {
   isDone: false
   }
+
+Item.propTypes = {
+  value: PropTypes.string.isRequired,
+  isDone: PropTypes.bool.isRequired,
+  onClickDone: PropTypes.func.isRequired,
+  onClickDelete: PropTypes.func.isRequired
+};
+
 
 	export default Item;
 
