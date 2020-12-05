@@ -13,7 +13,7 @@ const ItemList = ({ items, onClickDone, onClickDelete }) => (<ul className={styl
 	 </li>))}
 	</ul>);
 
-Item.defaultProps = {
+ItemList.defaultProps = {
 	value: 'Нет тем для изучения',
 	isDone: false
 };
