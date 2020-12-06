@@ -6,12 +6,24 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import PropTypes from 'prop-types';
 
-
-const Item = ({ value, isDone, onClickDone, id, onClickDelete }) => (<span className={
-	classnames({
-		[styles.item]: true,
-		[styles.done]: isDone
-	})
+class Item extends React.Component {
+  componentDidMount () {
+    console.log('componentDidMount');
+  }
+  componentDidUpdate () {
+    console.log('componentDidUpdate');
+  }
+  componentWillUnmount () {
+    console.log('componentWillUnmount');
+  }
+  
+  render () {
+    const { value, isDone, onClickDone, id, onClickDelete } = this.props;
+    return (<span className={
+  classnames({
+    [styles.item]: true,
+    [styles.done]: isDone
+  })
 }>
 <Checkbox
         defaultChecked
@@ -28,6 +40,8 @@ const Item = ({ value, isDone, onClickDone, id, onClickDelete }) => (<span class
       </IconButton>
 {value}
 </span>);
+  }
+}
 
 Item.defaultProps = {
   isDone: false
