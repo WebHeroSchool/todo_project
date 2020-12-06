@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer';
 import InputItem from '../InputItem/InputItem';
 import style from './App.module.css';
 import 'fontsource-roboto';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
 	state = {
@@ -72,6 +73,11 @@ render () {
 	<Footer count={this.state.count} />
 	</div>);
 	}
+};
+
+App.propTypes = {
+	value: PropTypes.string.isRequired,
+	isDone: PropTypes.bool.isRequired
 };
 
 	export default App;
