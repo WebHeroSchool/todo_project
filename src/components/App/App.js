@@ -60,7 +60,7 @@ const App = () => {
 	};
 const onClickAdd = value => {
 	if (value !== '')
-		const newItems => ({
+		setItems ({
 			items: [
 			...items,
 			{
@@ -74,11 +74,10 @@ const onClickAdd = value => {
 		});
  }
  else {
- 	newItems => 
+ 	setItems 
         ({
           hasError: true
         });
-        setItems(newItems);
         setCount( (count) => count -1);
  };
 
