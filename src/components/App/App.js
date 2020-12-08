@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ItemList from '../ItemList/ItemList';
 import Footer from '../Footer/Footer';
 import InputItem from '../InputItem/InputItem';
@@ -6,8 +6,8 @@ import style from './App.module.css';
 import 'fontsource-roboto';
 import PropTypes from 'prop-types';
 
-class App extends React.Component {
-	state = {
+const App = () => {
+	const initialState = {
 		items: [
 	{
 		value: 'Компоненты-классы',
@@ -28,52 +28,70 @@ class App extends React.Component {
 		count: 3,
 		hasError: false
 	};
-	onClickDone = id => {
-		const newItemList = this.state.items.map(item => {
+	const [items, setItems] = useState (initialState.items);
+  const [count, setCount] = useState (initialState.count);
+
+  useEffect(() => {
+    console.log("update");
+  });
+
+  useEffect(() => {
+    console.log("mount");
+  }, []);
+
+  useEffect(() => {
+    console.log("count change");
+  }, [count]);
+
+	const onClickDone = id => {
+		const newItemList = items.map(item => {
 			const newItem = {...item};
 			if (item.id === id) {
 				newItem.isDone = !item.isDone;
 			}
 			return newItem;
 		});
-		this.setState({ items: newItemList});
+		setItems(newItemList);
 	};
-	onClickDelete = id => {
-		const newDelItemList = this.state.items.filter(item => item.id !== id);
-		this.setState({ items: newDelItemList});
+	const onClickDelete = id => {
+		const newDelItemList = items.filter(item => item.id !== id);
+		setItems(newDelItemList);
+    setCount((count) => count - 1);
 	};
-onClickAdd = value => {
+const onClickAdd = value => {
 	if (value !== '')
-		{this.setState(state => ({
+		const newItems => ({
 			items: [
-			...state.items,
+			...items,
 			{
 				value,
 				isDone: false,
-				id: state.count + 1
+				id: count + 1
 			}
 			],
-			count: state.count + 1,
+			count: count + 1,
 			hasError: false
-		}));
+		});
  }
  else {
- 	this.setState(state => 
+ 	newItems => 
         ({
           hasError: true
-        }));
- }
-};
-render () {
+        });
+        setItems(newItems);
+        setCount( (count) => count -1);
+ };
+
+
+
 		return ( 
 	<div className={style.wrap}>
 	<h1 className={style.title}> План обучения на неделю </h1>
-	<InputItem onClickAdd={this.onClickAdd} hasError={this.state.hasError} />
-	<ItemList items={this.state.items} onClickDone={this.onClickDone} onClickDelete={this.onClickDelete} />
-	<Footer count={this.state.count} />
+	<InputItem onClickAdd={onClickAdd} hasError={hasError} />
+	<ItemList items={items} onClickDone={onClickDone} onClickDelete={onClickDelete} />
+	<Footer count={count} />
 	</div>);
-	}
-};
+}
 
 App.propTypes = {
 	value: PropTypes.string.isRequired,
