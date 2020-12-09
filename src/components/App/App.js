@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 const App = () => {
 	const initialState = {
 		items: [
-	{
+		{
 		value: 'Компоненты-классы',
 		isDone: true,
 		id: 1
@@ -28,19 +28,20 @@ const App = () => {
 		count: 3,
 		hasError: false
 	};
+}
 	const [items, setItems] = useState (initialState.items);
-  const [count, setCount] = useState (initialState.count);
+   const [count, setCount] = useState (initialState.count);
 
   useEffect(() => {
-    console.log("update");
-  });
+	console.log("update");
+});
 
   useEffect(() => {
-    console.log("mount");
-  }, []);
+	console.log("mount");
+}, []);
 
   useEffect(() => {
-    console.log("count change");
+  	console.log("count change");
   }, [count]);
 
 	const onClickDone = id => {
@@ -53,13 +54,13 @@ const App = () => {
 		});
 		setItems(newItemList);
 	};
-	const onClickDelete = id => {
+	const onClickDelete = id => 	{
 		const newDelItemList = items.filter(item => item.id !== id);
 		setItems(newDelItemList);
-    setCount((count) => count - 1);
+		setCount((count) => count - 1);
 	};
 const onClickAdd = value => {
-	if (value !== '')
+	if (value !== '') {
 		setItems ({
 			items: [
 			...items,
@@ -67,21 +68,16 @@ const onClickAdd = value => {
 				value,
 				isDone: false,
 				id: count + 1
-			}
-			],
+			}],
 			count: count + 1,
 			hasError: false
 		});
- }
- else {
- 	setItems 
-        ({
-          hasError: true
-        });
-        setCount( (count) => count -1);
- };
-
-
+} else {
+	setItems ({
+		hasError: true
+	});
+	setCount((count) => count - 1);
+};
 
 		return ( 
 	<div className={style.wrap}>
@@ -90,7 +86,7 @@ const onClickAdd = value => {
 	<ItemList items={items} onClickDone={onClickDone} onClickDelete={onClickDelete} />
 	<Footer count={count} />
 	</div>);
-}
+};
 
 App.propTypes = {
 	value: PropTypes.string.isRequired,
