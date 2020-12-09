@@ -28,7 +28,7 @@ const App = () => {
 		count: 3,
 		hasError: false
 	};
-}
+
 	const [items, setItems] = useState (initialState.items);
    const [count, setCount] = useState (initialState.count);
 
@@ -91,6 +91,9 @@ const onClickAdd = value => {
 App.propTypes = {
 	value: PropTypes.string.isRequired,
 	isDone: PropTypes.bool.isRequired
+
+}
 };
+
 
 	export default App;
