@@ -31,6 +31,7 @@ const App = () => {
 
 	const [items, setItems] = useState (initialState.items);
    const [count, setCount] = useState (initialState.count);
+   const [hasError, setHasError] = useState (initialState.hasError);
 
   useEffect(() => {
 	console.log("update");
@@ -61,22 +62,19 @@ const App = () => {
 	};
 const onClickAdd = value => {
 	if (value !== '') {
-		setItems ({
-			items: [
-			...items,
+		setItems ([
+		...items,
 			{
 				value,
 				isDone: false,
 				id: count + 1
-			}],
-			count: count + 1,
-			hasError: false
-		});
-} else {
-	setItems ({
-		hasError: true
-	});
-	setCount((count) => count - 1);
+			}]
+		);
+		setCount((count) => count + 1);
+} 
+else {
+	setHasError (true);
+}
 };
 
 		return ( 
@@ -88,12 +86,13 @@ const onClickAdd = value => {
 	</div>);
 };
 
+
 App.propTypes = {
 	value: PropTypes.string.isRequired,
 	isDone: PropTypes.bool.isRequired
 
 }
-};
+
 
 
 	export default App;
