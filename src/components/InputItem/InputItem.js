@@ -9,10 +9,10 @@ class InputItem extends React.Component {
     inputValue: ''
   };
   onButtonClick = () => {
+        this.props.onClickAdd(this.state.inputValue.toUpperCase());
     this.setState({
       inputValue: ''
     });
-    this.props.onClickAdd(this.state.inputValue.toUpperCase());
   }
   render() {
     const condition = this.props.hasError;
