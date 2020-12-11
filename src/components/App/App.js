@@ -23,7 +23,6 @@ const App = () =>
 	<Route path='/' exact component={About} />
 	<Route path='/todo' component={Todo} />
 	<Route path='/contacts' component={Contacts} />
-	<Todo />
 	</Card>
 	</div>
 	</Router>);
