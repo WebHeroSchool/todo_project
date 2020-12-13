@@ -1,8 +1,9 @@
-.wrap {
-  display: block;
+.app_wrap {
+  display: grid;
+  grid-template-areas: 'sidebar ... content content';
   margin: auto;
   padding: 10px;
-  width: 500px;
+  width: 650px;
   background: #F0FBFF;
   border-radius: 10px;
   border: 3px solid #000;
@@ -12,4 +13,16 @@
   font-family: Roboto;
   font-weight: 900;
   text-align: center;
+}
+.sidebar {
+  grid-area: sidebar;
+  padding-top: 40px;
+
+}
+.content {
+  grid-area: content;
+}
+.link {
+  text-decoration: none;
+  font-weight: 900;
 }
