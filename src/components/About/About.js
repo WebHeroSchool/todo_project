@@ -57,7 +57,7 @@ class About extends React.Component {
 			{!fetchFailure && <div>{err.message}</div>}
 			{!isLoading && <ul className={styles.ul}>
 				{repoList.map(repo => (<li className={styles.li} key={repo.id}>
-					<a href={repo.html_url} className={styles.link} target="_blank">{repo.name}</a>
+					<a href={repo.html_url} className={styles.link} target="_blank" rel="noreferrer">{repo.name}</a>
 				</li>))}
 				</ul>}
 				</div>
