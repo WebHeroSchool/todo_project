@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './About.module.css';
 import CardContent from '@material-ui/core/CardContent';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { Octokit } from "@octokit/rest";
+import Prelouder from '../Prelouder/Prelouder';
  
 
 const octokit = new Octokit();
@@ -51,13 +51,13 @@ class About extends React.Component {
 		return (
 			<CardContent>
 			<div className={styles.about}>
-			<h1 className={styles.title}>{ isLoading ? <CircularProgress /> : 'Меня зовут:  '} { name } </h1>
-			<div> <img className={styles.img} scr={ avatarUrl } alt="Аватар" /> </div>
-			<h2 className={styles.repo}>{ isLoading ? <CircularProgress /> : 'Мои репозитории'}</h2>
+			<h1 className={styles.title}>{ isLoading ? <Prelouder /> : 'Меня зовут:  '} { name } </h1>
+			<div> <img className={styles.img} src={ avatarUrl } alt="Аватар" /> </div>
+			<h2 className={styles.repo}>{ isLoading ? <Prelouder /> : 'Мои репозитории на GitHub'}</h2>
 			{!fetchFailure && <div>{err.message}</div>}
 			{!isLoading && <ul className={styles.ul}>
-				{repoList.map(repo => (<li key={repo.id}>
-					<a href={repo.id}>{repo.name}</a>
+				{repoList.map(repo => (<li className={styles.li} key={repo.id}>
+					<a href={repo.html_url} className={styles.link} target="_blank">{repo.name}</a>
 				</li>))}
 				</ul>}
 				</div>
