@@ -9,22 +9,27 @@ const Todo = () => {
 	const initialState = {
 		items: [
 		{
-		value: 'Компоненты-классы',
+		value: 'Задача 1',
 		isDone: true,
 		id: 1
 	},
 	{
-		value: 'State',
+		value: 'Задача 2',
 		isDone: false,
 		id: 2
 	},
 	{
-		value: 'Обработка событий',
+		value: 'Задача 3',
 		isDone: false,
 		id: 3
+	},
+	{
+		value: 'Задача 4',
+		isDone: false,
+		id: 4
 	}
 		],
-		count: 3,
+		count: 4,
 		hasError: false
 	};
 
@@ -66,7 +71,9 @@ else {
 
 		return ( 
 	<div className={style.wrap}>
-	<h1 className={style.title}> План обучения на неделю </h1>
+	<p className={style.title}> Список задач </p>
+	<span className={style.did}>Завершенные  </span>
+	<span className={style.notDid}>Незавершенные</span>
 	<InputItem onClickAdd={onClickAdd} hasError={hasError} />
 	<ItemList items={items} onClickDone={onClickDone} onClickDelete={onClickDelete} />
 	<Footer count={count} />
