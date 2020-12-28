@@ -15,23 +15,30 @@
 .ul {
   font-family: Roboto;
   font-weight: 700;
-  color: #3f4c6b;
 }
 .li {
   padding: 0 0 0 30px;
 }
 .about {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 500px;
-  margin-top: 50px;
+  font-family: Roboto;
 }
 .img {
-  height: 150px;
-  width: 150px;
+  height: 158px;
+  width: 158px;
 }
-.link {
+.bio {
+  position: relative;
+  bottom: 130px;
+  left: 200px;
+  font-weight: 400;
+}
+.url {
+  position: relative;
+  bottom: 110px;
+  left: 200px;
+  font-weight: 400;
+}
+.link, .url {
   text-decoration: none;
   color: #4096ee;
 }

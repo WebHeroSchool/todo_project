@@ -14,7 +14,9 @@ class About extends React.Component {
 		fetchFailure: false,
 		err: {},
 		userInfo: [],
-		avatarUrl: []
+		avatarUrl: [],
+		bio: [],
+		html_url: [],
 	}
 	componentDidMount() {
 		octokit.repos.listForUser ({
@@ -35,7 +37,9 @@ class About extends React.Component {
 		}).then(response => {
 			this.setState({
 				avatarUrl: response.data.avatar_url,
-				name: response.data.name
+				name: response.data.name,
+				bio: response.data.bio,
+				html_url: response.data.html_url
 			});
 		})
 
@@ -47,12 +51,16 @@ class About extends React.Component {
 			});
 	}
 	render() {
-		const { isLoading, repoList, fetchFailure, err, name, avatarUrl } = this.state;
+		const { isLoading, repoList, fetchFailure, err, name, avatarUrl, bio, html_url } = this.state;
 		return (
 			<CardContent>
+			<h1 className={styles.title}>{ isLoading ? <Prelouder /> : name }</h1>
 			<div className={styles.about}>
-			<h1 className={styles.title}>{ isLoading ? <Prelouder /> : 'Меня зовут:  '} { name } </h1>
-			<div> <img className={styles.img} src={ avatarUrl } alt="Аватар" /> </div>
+			<img className={styles.img} src={ avatarUrl } alt="Аватар" /> 
+			<div className={styles.bio}> { bio } </div>
+			<a href={ html_url } className={styles.url} target="_blank" rel="noreferrer">{ html_url }</a>
+			</div>
+			<div>
 			<h2 className={styles.repo}>{ isLoading ? <Prelouder /> : 'Мои репозитории на GitHub'}</h2>
 			{!fetchFailure && <div>{err.message}</div>}
 			{!isLoading && <ul className={styles.ul}>
