@@ -8,7 +8,6 @@ import MenuList from '@material-ui/core/MenuList';
 import Todo from '../Todo/Todo';
 import About from '../About/About';
 import Contacts from '../Contacts/Contacts';
-import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
 const App = () => 
