@@ -3,7 +3,7 @@ import styles from './About.module.css';
 import CardContent from '@material-ui/core/CardContent';
 import { Octokit } from "@octokit/rest";
 import Prelouder from '../Prelouder/Prelouder';
- 
+
 
 const octokit = new Octokit();
 class About extends React.Component {

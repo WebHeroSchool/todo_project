@@ -68,12 +68,16 @@ else {
 	setHasError (true);
 }
 };
+const renderIsDone = () => {
+	const newItems = items.filter(item => item.isDone === true);
+	return newItems.length;
+}
 
 		return ( 
 	<div className={style.wrap}>
-	<p className={style.title}> Список задач </p>
-	<span className={style.did}>Завершенные  </span>
-	<span className={style.notDid}>Незавершенные</span>
+	<h2 className={style.title}> Список задач - {items.length}</h2>
+	<span className={style.did}>Завершенные - {renderIsDone()}</span>
+	<span className={style.notDid}>Незавершенные - {count}</span>
 	<InputItem onClickAdd={onClickAdd} hasError={hasError} />
 	<ItemList items={items} onClickDone={onClickDone} onClickDelete={onClickDelete} />
 	<Footer count={count} />
