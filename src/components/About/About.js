@@ -3,6 +3,7 @@ import styles from './About.module.css';
 import CardContent from '@material-ui/core/CardContent';
 import { Octokit } from "@octokit/rest";
 import Prelouder from '../Prelouder/Prelouder';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 
 const octokit = new Octokit();
@@ -20,11 +21,12 @@ class About extends React.Component {
 	}
 	componentDidMount() {
 		octokit.repos.listForUser ({
-			username: this.state.username
+			username: this.state.username,
 		}).then (({ data }) => {
 			this.setState({
 				repoList: data,
-				isLoading: false
+				isLoading: false,
+				fetchFailure: false
 			});
 			}).catch(error => {
       this.setState({
@@ -42,13 +44,13 @@ class About extends React.Component {
 				html_url: response.data.html_url
 			});
 		})
-
 			.catch(err => {
 				this.setState({
 					isLoading: false,
 					isError: true,
 				});
 			});
+
 	}
 	render() {
 		const { isLoading, repoList, fetchFailure, err, name, avatarUrl, bio, html_url } = this.state;
@@ -58,14 +60,18 @@ class About extends React.Component {
 			<div className={styles.about}>
 			<img className={styles.img} src={ avatarUrl } alt="Аватар" /> 
 			<div className={styles.bio}> { bio } </div>
+			<div className={styles.github}>
+			<GitHubIcon />
+			</div>
 			<a href={ html_url } className={styles.url} target="_blank" rel="noreferrer">{ html_url }</a>
 			</div>
 			<div>
 			<h2 className={styles.repo}>{ isLoading ? <Prelouder /> : 'Мои репозитории на GitHub'}</h2>
 			{!fetchFailure && <div>{err.message}</div>}
 			{!isLoading && <ul className={styles.ul}>
-				{repoList.map(repo => (<li className={styles.li} key={repo.id}>
-					<a href={repo.html_url} className={styles.link} target="_blank" rel="noreferrer">{repo.name}</a>
+			{repoList.map(repo => (<li className={styles.li} key={repo.name}>
+					<a href={repo.html_url} className={styles.link} target="_blank" rel="noreferrer">{repo.name}</a> 
+			<p className={styles.text}>{repo.description}</p>
 				</li>))}
 				</ul>}
 				</div>

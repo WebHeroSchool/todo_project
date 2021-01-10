@@ -1,26 +1,10 @@
-.wrap {
-  display: block;
-  margin: auto;
-  padding: 10px;
-  width: 500px;
-  background: #F0FBFF;
-  border-radius: 10px;
-  border: 3px solid #000;
-   box-shadow: 0px 0px 12px #9b9797;
-}
 .title {
-  font-family: Roboto;
   font-weight: 900;
   text-align: center;
   font-size: 25px;
   margin: 0;
 }
-.did {
+.wrap {
+  padding: 5px;
   font-family: Roboto;
-  font-size: 15px;
-}
-.notDid {
-  font-family: Roboto;
-  font-size: 15px;
-  margin-left: 45%;
 }
