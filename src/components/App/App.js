@@ -9,7 +9,7 @@ import Todo from '../Todo/Todo';
 import About from '../About/About';
 import Contacts from '../Contacts/Contacts';
 import Button from '@material-ui/core/Button';
-
+import Logo from '../Logo/Logo';
 
 const App = () => 
 (<Router>
@@ -30,6 +30,7 @@ const App = () =>
 	<Card>
 	<Link to='/contacts' className = {styles.link}><MenuItem>Контакты</MenuItem></Link>
 	</Card>
+	<Logo />
 	</div>
 	</MenuList>
 	</Card>
@@ -39,7 +40,6 @@ const App = () =>
 	<Route path='/contacts' component={Contacts} />
 	</Card>
 	</div>
-
 	</Router>);
 
 

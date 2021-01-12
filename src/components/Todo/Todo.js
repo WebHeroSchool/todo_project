@@ -10,12 +10,14 @@ const Todo = () => {
 		items: [],
 		count: 4,
 		isDone: false,
-		hasError: false
+		hasError: false,
+		sortTask: 'Список дел'
 	};
 
 	const [items, setItems] = useState (initialState.items);
    const [count, setCount] = useState (initialState.count);
    const [hasError, setHasError] = useState (initialState.hasError);
+   const [sortTask, setSort] = useState (initialState.sortTask);
 
 	const onClickDone = id => {
 		const newItemList = items.map(item => {
@@ -48,16 +50,34 @@ else {
 	setHasError (true);
 }
 };
+
 const renderIsDone = (status) => {
 	const newItems = items.filter(item => item.isDone === status);
 	return newItems.length;
 }
 
+const onClickSort = (sorting) => setSort(sorting);
+let sortingTask;
+switch (sortTask) {
+	case 'Завершенные':
+	sortingTask = items.filter((item) => item.isDone);
+	break;
+	case 'Незавершенные':
+	sortingTask = items.filter((item) => !item.isDone);
+	break;
+	case 'Список задач':
+	sortingTask = items;
+	break;
+	default:
+	sortingTask = items;
+}
+
 		return ( 
 	<div className={style.wrap}>
 	<h2 className={style.title}> Список задач - {items.length}</h2>
-	<InputItem onClickAdd={onClickAdd} hasError={hasError} />
-	<ItemList items={items} onClickDone={onClickDone} onClickDelete={onClickDelete} />
+	<InputItem items={items} onClickAdd={onClickAdd} hasError={hasError} />
+	<ItemList items={items} onClickDone={onClickDone} onClickDelete={onClickDelete}
+	sort={sortingTask} sortValue={sortTask} />
 	<Footer renderIsDone={renderIsDone} />
 	</div>);
 };

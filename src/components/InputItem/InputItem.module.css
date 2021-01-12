@@ -2,9 +2,6 @@
   text-align: center;
   background: #FFF;
 }
-.input_style {
-  width: 70%;
-}
 .wrap__errorempty::before {
   content: 'Поле пустое или такая задача уже есть!';
   position: absolute;
@@ -14,7 +11,7 @@
   color: #fff;
   background-color: #356eff;
   border-radius: 6px;
-  transform: translateY(130%);
+  transform: translateX(100%);
 }
 .wrap__errorrepeat::before {
   content: 'Такая задача уже есть!';
@@ -25,5 +22,5 @@
   color: #fff;
   background-color: #356eff;
   border-radius: 6px;
-  transform: translateY(-130%);
+  transform: translateX(100%);
 }

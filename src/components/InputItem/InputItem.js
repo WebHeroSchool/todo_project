@@ -15,9 +15,9 @@ class InputItem extends React.Component {
     let { onClickAdd, items } = this.props;
     let isRepeat = false;
     items.forEach((item) => {
-      if(item.value === this.state.inputValue){
+      if(item.value === this.state.inputValue) {
         isRepeat = true;
-      }
+        }
     });
     if(this.state.inputValue === '' || isRepeat) {
       this.setState({
@@ -46,7 +46,7 @@ class InputItem extends React.Component {
         classnames({
         [styles.input_style]: true,
         [styles.wrap__errorempty]: isEmpty,
-        [styles.wrap__errorrepeat]: isRepeat
+        [styles.wrap__errorrepeat]: isRepeat,
       })}>
    <TextField
    className={styles.inputField}
