@@ -4,6 +4,8 @@ import Footer from '../Footer/Footer';
 import InputItem from '../InputItem/InputItem';
 import style from './Todo.module.css';
 import 'fontsource-roboto';
+import Button from '@material-ui/core/Button';
+import classnames from 'classnames';
 
 const Todo = () => {
 	const initialState = {
@@ -11,7 +13,7 @@ const Todo = () => {
 		count: 4,
 		isDone: false,
 		hasError: false,
-		sortTask: 'Список дел'
+		sortTask: 'Список дел',
 	};
 
 	const [items, setItems] = useState (initialState.items);
@@ -72,13 +74,23 @@ switch (sortTask) {
 	sortingTask = items;
 }
 
-		return ( 
+		return (
 	<div className={style.wrap}>
-	<h2 className={style.title}> Список задач - {items.length}</h2>
+	<div className={style.todo}>
+	<Button variant="outlined" color="primary"
+	className={classnames({
+		[style.button]:true,
+		[style.buttonAct]:sorting ==='Список задач',
+	})}
+	onClick={() => onClickSort('Список задач')}
+	>
+	<span className={style.title}> Список задач - {items.length}</span>
+	</Button>
+	</div>
 	<InputItem items={items} onClickAdd={onClickAdd} hasError={hasError} />
 	<ItemList items={items} onClickDone={onClickDone} onClickDelete={onClickDelete}
 	sort={sortingTask} sortValue={sortTask} />
-	<Footer renderIsDone={renderIsDone} />
+	<Footer renderIsDone={renderIsDone} onClickSort={onClickSort} sorting={sortTask}/>
 	</div>);
 };
 

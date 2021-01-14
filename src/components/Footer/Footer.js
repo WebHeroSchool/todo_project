@@ -7,8 +7,8 @@ const Footer = ({ items, renderIsDone, sorting, onClickSort }) => (
 	<div className={style.footer}>
 	<Button variant="outlined" color="primary"
 	className={classnames({
-		[styles.button]:true,
-		[styles.buttonAct]:sorting ==='Завершенные',
+		[style.button]:true,
+		[style.buttonAct]:sorting ==='Завершенные',
 	})}
 	onClick={() => onClickSort('Завершенные')}
 	>
@@ -16,8 +16,8 @@ const Footer = ({ items, renderIsDone, sorting, onClickSort }) => (
 	</Button>
 	<Button variant="outlined" color="primary"
 	className={classnames({
-		[styles.button]:true,
-		[styles.buttonAct]:sorting ==='Незавершенные',
+		[style.button]:true,
+		[style.buttonAct]:sorting ==='Незавершенные',
 	})}
 	onClick={() => onClickSort('Завершенные')}
 	>
