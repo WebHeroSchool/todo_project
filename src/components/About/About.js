@@ -13,7 +13,6 @@ class About extends React.Component {
 		repoList: [],
 		username: 'VladimirovaEV',
 		fetchFailure: false,
-		err: {},
 		userInfo: [],
 		avatarUrl: [],
 		bio: [],
@@ -28,12 +27,13 @@ class About extends React.Component {
 				isLoading: false,
 				fetchFailure: false
 			});
-			}).catch(error => {
-      this.setState({
-        fetchFailure: true,
-        err: error
-		});
-   });
+			}).catch(() => {
+				this.setState ({
+					isLoading: false,
+					isError: true,
+					TextErr:'Что-то пошло не так...'
+				});
+			})
 			octokit.users.getByUsername({
 			username: this.state.username,
 		}).then(response => {
@@ -44,7 +44,7 @@ class About extends React.Component {
 				html_url: response.data.html_url
 			});
 		})
-			.catch(err => {
+			.catch(() => {
 				this.setState({
 					isLoading: false,
 					isError: true,
@@ -53,9 +53,12 @@ class About extends React.Component {
 
 	}
 	render() {
-		const { isLoading, repoList, fetchFailure, err, name, avatarUrl, bio, html_url } = this.state;
+		const { isLoading, repoList, fetchFailure, isError, TextErr, name, avatarUrl, bio, html_url } = this.state;
 		return (
-			<CardContent>
+			<div>
+			{isLoading ? <Prelouder /> : <div>
+				{isError ? <div>{TextErr}</div> : <div>
+				<CardContent>
 			<h1 className={styles.title}>{ isLoading ? <Prelouder /> : name }</h1>
 			<div className={styles.about}>
 			<img className={styles.img} src={ avatarUrl } alt="Аватар" /> 
@@ -67,7 +70,7 @@ class About extends React.Component {
 			</div>
 			<div>
 			<h2 className={styles.repo}>{ isLoading ? <Prelouder /> : 'Мои репозитории на GitHub'}</h2>
-			{!fetchFailure && <div>{err.message}</div>}
+			{!fetchFailure && <div>{TextErr}</div>}
 			{!isLoading && <ul className={styles.ul}>
 			{repoList.map(repo => (<li className={styles.li} key={repo.name}>
 					<a href={repo.html_url} className={styles.link} target="_blank" rel="noreferrer">{repo.name}</a> 
@@ -76,8 +79,12 @@ class About extends React.Component {
 				</ul>}
 				</div>
 			</CardContent>
-			);
-	}
+				</div>
+				}
+				</div>
+				}
+			</div>)
+		}
 }
 
 export default About; 

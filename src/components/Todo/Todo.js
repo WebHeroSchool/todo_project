@@ -13,7 +13,7 @@ const Todo = () => {
 		count: 4,
 		isDone: false,
 		hasError: false,
-		sortTask: 'Список дел',
+		sortTask: 'Список задач',
 	};
 
 	const [items, setItems] = useState (initialState.items);
@@ -80,7 +80,7 @@ switch (sortTask) {
 	<Button variant="outlined" color="primary"
 	className={classnames({
 		[style.button]:true,
-		[style.buttonAct]:sorting ==='Список задач',
+		[style.buttonAct]:sortingTask ==='Список задач',
 	})}
 	onClick={() => onClickSort('Список задач')}
 	>
