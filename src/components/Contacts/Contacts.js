@@ -42,11 +42,12 @@ class Contacts extends React.Component {
 	}
 
 render () {
-		const { isLoading, username, fetchFailure, isError, TextErr, email, location, avatarUrl, facebook } = this.state;
+		const { isLoading, fetchFailure, isError, TextErr, email, location, avatarUrl, facebook } = this.state;
 return (
 	<div>
 	{isLoading ? <Prelouder /> : <div>
 		{isError ? <div>{TextErr}</div> : <div>
+					{!fetchFailure && <div>{TextErr}</div>}
 		<CardContent>
 		<h1 className={styles.title}>Мои контакты</h1>
 		<div className={styles.locationIcon}>
