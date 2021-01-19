@@ -17,7 +17,23 @@ class About extends React.Component {
 		avatarUrl: [],
 		bio: [],
 		html_url: [],
+		firstRepo: 0,
+		lastRepo: 2
 	}
+	lastPage = () => {
+		this.setState({
+			firstRepo: this.state.firstRepo - 2,
+			lastRepo: this.state.lastRepo - 2,
+		});
+	};
+
+	nextPage = () => {
+		this.setState({
+			firstRepo: this.state.firstRepo + 2,
+			lastRepo: this.state.lastRepo + 2,
+		});
+	};
+
 	componentDidMount() {
 		octokit.repos.listForUser ({
 			username: this.state.username,
@@ -53,7 +69,8 @@ class About extends React.Component {
 
 	}
 	render() {
-		const { isLoading, repoList, fetchFailure, isError, TextErr, name, avatarUrl, bio, html_url } = this.state;
+		const { isLoading, repoList, fetchFailure, isError, TextErr, name, avatarUrl, bio, html_url, firstRepo, lastRepo } = this.state;
+		const repoListPage = repoList.slice(firstRepo,lastRepo);
 		return (
 			<div>
 			{isLoading ? <Prelouder /> : <div>
@@ -72,12 +89,26 @@ class About extends React.Component {
 			<h2 className={styles.repo}>{ isLoading ? <Prelouder /> : 'Мои репозитории на GitHub'}</h2>
 			{!fetchFailure && <div>{TextErr}</div>}
 			{!isLoading && <ul className={styles.ul}>
-			{repoList.map(repo => (<li className={styles.li} key={repo.name}>
+			{repoListPage.map(repo => (<li className={styles.li} key={repo.name}>
 					<a href={repo.html_url} className={styles.link} target="_blank" rel="noreferrer">{repo.name}</a> 
 			<p className={styles.text}>{repo.description}</p>
 				</li>))}
 				</ul>}
 				</div>
+				<div className={styles.pagination}>
+                    <button className={styles.pagination_button}
+                        onClick={this.lastPage}
+                        disabled={firstRepo < 1}
+                    >
+                    Back
+                    </button>
+                    <button className={styles.pagination_button}
+                        onClick={this.nextPage}
+                        disabled={repoList.length < lastRepo}
+                    >
+                    Forward
+                    </button>
+                </div>
 			</CardContent>
 				</div>
 				}
