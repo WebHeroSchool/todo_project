@@ -16,7 +16,6 @@ class Contacts extends React.Component {
 		username: 'VladimirovaEV',
 		fetchFailure: false,
 		avatarUrl: [],
-		err: {},
 		email: 'VladimirovaEV79@yandex.ru',
 		location: [],
 		facebook:'https://web.facebook.com/ekaterina.vladimirova.735/'
@@ -27,7 +26,9 @@ class Contacts extends React.Component {
 		}).then(response => {
 			this.setState({
 				avatarUrl: response.data.avatar_url,
-				location: response.data.location
+				location: response.data.location,
+				isLoading: false,
+				fetchFailure: false
 			});
 		})
 
@@ -35,38 +36,45 @@ class Contacts extends React.Component {
 				this.setState({
 					isLoading: false,
 					isError: true,
+					TextErr:'Что-то пошло не так...'
 				});
 			});
 	}
 
 render () {
-		const { isLoading, username, fetchFailure, err, email, location, avatarUrl, facebook } = this.state;
-	return (
-				<CardContent>
-				<h1 className={styles.title}>Мои контакты</h1>
-				<div className={styles.locationIcon}>
-			<LocationOnIcon color="primary" />
-			</div>
-				<div className={styles.location}> { location } </div>
-				<div className={styles.mailIcon}>
-      <MailOutlineIcon color="primary" />
-            </div>
-			<div>
-			<a href="mailto:{ email }" className={styles.email} target="_blank" rel="noreferrer">{ email } </a>
-			</div>
-			<div className={styles.facebookIcon}>
-						<FacebookIcon color="primary" />
-			</div>
-					<div>
-					<a href={ facebook } className={styles.facebook} target="_blank" rel="noreferrer">{ facebook }</a>
-					</div>
-					<p className={styles.p}>
-					<img className={styles.img} src={ avatarUrl } alt="Аватар" />
-					</p>
+		const { isLoading, username, fetchFailure, isError, TextErr, email, location, avatarUrl, facebook } = this.state;
+return (
+	<div>
+	{isLoading ? <Prelouder /> : <div>
+		{isError ? <div>{TextErr}</div> : <div>
+		<CardContent>
+		<h1 className={styles.title}>Мои контакты</h1>
+		<div className={styles.locationIcon}>
+		<LocationOnIcon color="primary" />
+		</div>
+		<div className={styles.location}> {location} </div>
+		<div className={styles.mailIcon}>
+		<MailOutlineIcon color="primary" />
+		</div>
+		<div>
+		<a href="mailto:{ email }" className={styles.email} target="_blank" rel="noreferrer">{email} </a>
+		</div>
+		<div className={styles.facebookIcon}>
+		<FacebookIcon color="primary" />
+		</div>
+		<div>
+		<a href={facebook} className={styles.facebook} target="_blank" rel="noreferrer">{facebook}</a>
+		</div>
+		<p className={styles.p}>
+		<img className={styles.img} src={avatarUrl} alt="Аватар" />
+		</p>
 		</CardContent>
-		);
-   }
-
-}
+		</div>
+	}
+		</div>
+	}
+		</div>);
+		}
+	}
 
 export default Contacts; 
