@@ -1,5 +1,4 @@
-{ "homepage": "http://VladimirovaEV.github.io/todo",
-  "name": "todo",
+{ "name": "todo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
