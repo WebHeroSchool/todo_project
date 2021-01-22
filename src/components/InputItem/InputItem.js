@@ -34,7 +34,7 @@ class InputItem extends React.Component {
         isEmpty: false,
         isRepeat: false,
       });
-      onClickAdd(this.state.inputValue);
+      onClickAdd(this.state.inputValue.toUpperCase());
     }
   };
 
