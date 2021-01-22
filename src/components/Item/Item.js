@@ -16,7 +16,10 @@ class Item extends React.Component {
     [styles.done]: isDone
   })
 }>
-<Checkbox
+<Checkbox className={classnames({
+  [styles.checkbox]:true,
+  [styles.checkboxCheck]:isDone
+})}
         defaultChecked
         color="primary"
         inputProps={{ 'aria-label': 'secondary checkbox' }}

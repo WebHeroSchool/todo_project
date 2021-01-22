@@ -19,7 +19,7 @@ const Footer = ({ items, renderIsDone, sorting, onClickSort }) => (
 		[style.button]:true,
 		[style.buttonAct]:sorting ==='Незавершенные',
 	})}
-	onClick={() => onClickSort('Завершенные')}
+	onClick={() => onClickSort('Незавершенные')}
 	>
 	<span className={style.notDid}>Незавершенные - {renderIsDone(false)}</span>
 	</Button>

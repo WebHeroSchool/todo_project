@@ -10,3 +10,6 @@
 .icon {
   left: 80%;
 }
+.checkboxCheck {
+  pointer-events: none;
+}

@@ -10,7 +10,7 @@ import classnames from 'classnames';
 const Todo = () => {
 	const initialState = {
 		items: [],
-		count: 4,
+		count: 1,
 		isDone: false,
 		hasError: false,
 		sortTask: 'Список задач',
