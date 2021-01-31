@@ -2,25 +2,3 @@
   text-align: center;
   background: #FFF;
 }
-.wrap__errorempty::before {
-  content: 'Поле пустое или такая задача уже есть!';
-  position: absolute;
-  padding: 10px;
-  width: 170px;
-  font-size: 14px;
-  color: #fff;
-  background-color: #356eff;
-  border-radius: 6px;
-  transform: translateX(100%);
-}
-.wrap__errorrepeat::before {
-  content: 'Такая задача уже есть!';
-  position: absolute;
-  padding: 10px;
-  width: 170px;
-  font-size: 14px;
-  color: #fff;
-  background-color: #356eff;
-  border-radius: 6px;
-  transform: translateX(100%);
-}

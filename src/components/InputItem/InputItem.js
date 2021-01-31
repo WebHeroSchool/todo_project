@@ -2,57 +2,33 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import styles from './InputItem.module.css';
 import Button from '@material-ui/core/Button';
-import classnames from 'classnames';
 
 class InputItem extends React.Component {
     state = {
         inputValue: '',
-        isEmpty: false,
-        isRepeat: false
+        inputerror: false,
     };
-    onButtonClick = () => {
-        let { onClickAdd, items } = this.props;
-        let isRepeat = false;
-        let isEmpty = false;
-        items.forEach((item) => {
-            if (item.value === this.state.inputValue) {
-                this.setState({
-                    isRepeat: true,
-                });
-                setTimeout(() => {
-                    this.setState({
-                        isRepeat: false,
-                    }, 1500);
-                } else if (this.state.inputValue === '') {
-                    this.setState({
-                        isEmpty: true,
-                    });
-                    setTimeout(() => {
-                        this.setState({
-                            isEmpty: false,
-                        }, 1500);
-                    } else {
-                            this.setState({
-                                inputValue: '',
-                                isEmpty: false,
-                                isRepeat: false,
-                            });
-                        onClickAdd(this.state.inputValue.toUpperCase());
-                    })
-                })
-            }
-        })
+onButtonClick = () => {
+  if(this.state.inputValue === '') {
+    this.setState({inputerror: true, helperText: 'Введите задание!'});
+  } else if (this.props.items.find(item => item.value === this.state.inputValue )) {
+      this.setState({inputerror: true, helperText: 'Такое задание уже есть!'});
+    } else {
+      this.setState({
+        inputValue: '',
+        inputerror: false,
+        helperText: ''
+      });
+      this.props.onClickAdd(this.state.inputValue.toUpperCase());
     }
+  };
+
+
+
 render() {
-    const { isEmpty, isRepeat } = this.state;
+    const { onClickAdd, items } = this.state;
     return (
         <div className={styles.inputWrap}>
-            <div className={
-                classnames({
-                    [styles.input_style]: true,
-                    [styles.wrap__errorempty]: isEmpty,
-                    [styles.wrap__errorrepeat]: isRepeat,
-                })}>
                 <TextField
                     className={styles.inputField}
                     id="outlined-full-width"
@@ -67,8 +43,9 @@ render() {
                         shrink: true,
                     }}
                     variant="outlined"
+                    inputerror = {this.state.inputError}
+                    helperText = {this.state.helperText}
                 />
-            </div>
             <Button variant="contained"
                 color="primary"
                 fullWidth
