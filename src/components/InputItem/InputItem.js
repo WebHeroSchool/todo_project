@@ -6,17 +6,17 @@ import Button from '@material-ui/core/Button';
 class InputItem extends React.Component {
     state = {
         inputValue: '',
-        inputerror: false,
+        inputError: false,
     };
 onButtonClick = () => {
   if(this.state.inputValue === '') {
-    this.setState({inputerror: true, helperText: 'Введите задание!'});
-  } else if (this.props.items.find(item => item.value === this.state.inputValue )) {
-      this.setState({inputerror: true, helperText: 'Такое задание уже есть!'});
+    this.setState({inputError: true, helperText: 'Введите задание!'});
+  } else if (this.props.items.find(item => item.value === this.state.inputValue.toUpperCase() )) {
+      this.setState({inputError: true, helperText: 'Такое задание уже есть!'});
     } else {
       this.setState({
         inputValue: '',
-        inputerror: false,
+        inputError: false,
         helperText: ''
       });
       this.props.onClickAdd(this.state.inputValue.toUpperCase());
@@ -26,7 +26,7 @@ onButtonClick = () => {
 
 
 render() {
-    const { onClickAdd, items } = this.state;
+
     return (
         <div className={styles.inputWrap}>
                 <TextField
@@ -43,7 +43,7 @@ render() {
                         shrink: true,
                     }}
                     variant="outlined"
-                    inputerror = {this.state.inputError}
+                    inputError = {this.state.inputError}
                     helperText = {this.state.helperText}
                 />
             <Button variant="contained"

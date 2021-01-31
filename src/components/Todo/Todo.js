@@ -33,7 +33,6 @@ const onClickAdd = value => {
 			}]
 		);
 		setCount((count) => count + 1);
-			console.log(items);
 
 } 
 else {
