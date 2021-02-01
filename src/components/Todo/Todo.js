@@ -87,19 +87,20 @@ switch (sortTask) {
 	</Button>
 	</div>
 	<InputItem items={items} onClickAdd={onClickAdd} />
-	<div className={style.error}>
+	<div>
 	{items.length === 0 ? (
+		<div className={style.error}>
 		<img src={emptylist} alt={"empty-list"} />
 		<div className={style.error_message}>
                     Пока не добавлено ни одной задачи!
+            </div>
             </div>
             ) : (
             <ItemList items={items} onClickDone={onClickDone} onClickDelete={onClickDelete}
 	sort={sortingTask} sortValue={sortTask}/>
             )}
 	</div>
-	</div>
-	<Footer renderIsDone={renderIsDone} onClickSort={onClickSort} sorting={sortTask}/>
+	<Footer renderIsDone={renderIsDone} onClickSort={onClickSort} sorting={sortTask}/> 
 	</div>);
 };
 

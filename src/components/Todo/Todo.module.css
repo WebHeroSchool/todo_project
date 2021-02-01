@@ -14,5 +14,9 @@
   margin-bottom: 5px;
 }
 .error {
-  margin: 80px 10px;
+  margin: 5% 10%;
+  text-align: center;
+}
+.error_message {
+  font-weight: 900;
 }
