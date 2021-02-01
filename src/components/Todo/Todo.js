@@ -6,20 +6,19 @@ import style from './Todo.module.css';
 import 'fontsource-roboto';
 import Button from '@material-ui/core/Button';
 import classnames from 'classnames';
+import emptylist from '../../img/empty-list.svg';
 
 const Todo = () => {
 	const initialState = {
 		items: [],
 		count: 0,
 		isDone: false,
-		hasError: false,
 		sortTask: 'Список задач',
 		id: 0,
 	};
 
 	const [items, setItems] = useState (initialState.items);
    const [count, setCount] = useState (initialState.count);
-   const [hasError, setHasError] = useState (initialState.hasError);
    const [sortTask, setSort] = useState (initialState.sortTask);
 
 const onClickAdd = value => {
@@ -33,10 +32,6 @@ const onClickAdd = value => {
 			}]
 		);
 		setCount((count) => count + 1);
-
-} 
-else {
-	setHasError (true);
 }
 };
 
@@ -54,7 +49,6 @@ else {
 	const onClickDelete = id => {
 		const newDelItemList = items.filter(item => item.id !== id);
 		setItems(newDelItemList);
-		setCount((count) => count - 1);
 	};
 
 
@@ -92,9 +86,19 @@ switch (sortTask) {
 	<span className={style.title}> Список задач - {items.length}</span>
 	</Button>
 	</div>
-	<InputItem items={items} onClickAdd={onClickAdd} hasError={hasError} />
-	<ItemList items={items} onClickDone={onClickDone} onClickDelete={onClickDelete}
-	sort={sortingTask} sortValue={sortTask} />
+	<InputItem items={items} onClickAdd={onClickAdd} />
+	<div className={style.error}>
+	{items.length === 0 ? (
+		<img src={emptylist} alt={"empty-list"} />
+		<div className={style.error_message}>
+                    Пока не добавлено ни одной задачи!
+            </div>
+            ) : (
+            <ItemList items={items} onClickDone={onClickDone} onClickDelete={onClickDelete}
+	sort={sortingTask} sortValue={sortTask}/>
+            )}
+	</div>
+	</div>
 	<Footer renderIsDone={renderIsDone} onClickSort={onClickSort} sorting={sortTask}/>
 	</div>);
 };
