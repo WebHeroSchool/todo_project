@@ -76,15 +76,15 @@ switch (sortTask) {
 		return (
 	<div className={style.wrap}>
 	<div className={style.todo}>
-	<Button variant="outlined" color="primary"
+	<button
 	className={classnames({
-		[style.button]:true,
-		[style.buttonAct]:sortingTask ==='Список задач',
+		[style.buttonBig]:true,
+		[style.buttonBigAct]:sortingTask ==='Список задач',
 	})}
 		onClick={() => onClickSort('Список задач')}
 	>
 	<span className={style.title}> Список задач - {items.length}</span>
-	</Button>
+	</button>
 	</div>
 	<InputItem items={items} onClickAdd={onClickAdd} />
 	<div>

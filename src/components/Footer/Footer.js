@@ -1,11 +1,10 @@
 import React from 'react';
 import style from './Footer.module.css';
-import Button from '@material-ui/core/Button';
 import classnames from 'classnames';
 
 const Footer = ({ items, renderIsDone, sorting, onClickSort }) => (
 	<div className={style.footer}>
-	<Button variant="outlined" color="primary"
+	<button
 	className={classnames({
 		[style.button]:true,
 		[style.buttonAct]:sorting ==='Завершенные',
@@ -13,8 +12,8 @@ const Footer = ({ items, renderIsDone, sorting, onClickSort }) => (
 	onClick={() => onClickSort('Завершенные')}
 	>
 	<span className={style.did}>Завершенные - {renderIsDone(true)}</span>
-	</Button>
-	<Button variant="outlined" color="primary"
+	</button>
+	<button
 	className={classnames({
 		[style.button]:true,
 		[style.buttonAct]:sorting ==='Незавершенные',
@@ -22,11 +21,9 @@ const Footer = ({ items, renderIsDone, sorting, onClickSort }) => (
 	onClick={() => onClickSort('Незавершенные')}
 	>
 	<span className={style.notDid}>Незавершенные - {renderIsDone(false)}</span>
-	</Button>
+	</button>
 	</div>
 
 );
-
-
-
 export default Footer;
+
