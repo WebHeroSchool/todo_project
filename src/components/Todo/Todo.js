@@ -4,7 +4,6 @@ import Footer from '../Footer/Footer';
 import InputItem from '../InputItem/InputItem';
 import style from './Todo.module.css';
 import 'fontsource-roboto';
-import Button from '@material-ui/core/Button';
 import classnames from 'classnames';
 import emptylist from '../../img/empty-list.svg';
 
