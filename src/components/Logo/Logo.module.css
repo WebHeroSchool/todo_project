@@ -4,18 +4,11 @@
   padding-left: 15px;
   width: 65%;
 }
+.logo:hover {
+  cursor: pointer;
+}
 .develop {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 10px;
-}
-.hero {
-  font-weight: bold;
-  font-size: 24px;
-  letter-spacing: 1px;
-  color: #febf01;
-}
-.school {
-  text-align: right;
-  font-weight: bold;
 }
